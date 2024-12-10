@@ -22,11 +22,11 @@ class FurnituresController < ApplicationController
     the_furniture.furniture_name = params.fetch("query_furniture_name")
     the_furniture.furniture_image = params.fetch("query_furniture_image")
     the_furniture.furniture_description = params.fetch("query_furniture_description")
-    the_furniture.owner_id = params.fetch("query_owner_id")
-    the_furniture.rent_start = params.fetch("query_rent_start")
-    the_furniture.rent_end = params.fetch("query_rent_end")
-    the_furniture.borrower_id = params.fetch("query_borrower_id")
-    the_furniture.comments_count = params.fetch("query_comments_count")
+    #the_furniture.owner_id = params.fetch("query_owner_id")
+    #the_furniture.rent_start = params.fetch("query_rent_start")
+    #the_furniture.rent_end = params.fetch("query_rent_end")
+    #the_furniture.borrower_id = params.fetch("query_borrower_id")
+    #the_furniture.comments_count = params.fetch("query_comments_count")
 
     if the_furniture.valid?
       the_furniture.save

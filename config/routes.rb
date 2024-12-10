@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  # Route for homepage will be furniture index page 
+  get("/", { :controller => "furnitures", :action => "index" })
+
+  #------------------------------
 
   # Routes for the Communication resource:
 
