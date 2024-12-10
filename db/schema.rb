@@ -10,9 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_12_10_203814) do
+ActiveRecord::Schema[7.1].define(version: 2024_12_10_211449) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "communications", force: :cascade do |t|
+    t.string "comment_body"
+    t.integer "author_id"
+    t.integer "furniture_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "furnitures", force: :cascade do |t|
     t.string "furniture_name"

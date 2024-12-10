@@ -1,0 +1,118 @@
+<div>
+  <div>
+    <h1>
+      List of all communications
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+    <h2>
+      Add a new communication
+    </h2>
+
+    <form action="/insert_communication" method="post">
+      <div>
+        <label for="comment_body_box">
+          Comment body
+        </label>
+
+        <input type="text" id="comment_body_box" name="query_comment_body">
+      </div>
+
+      <div>
+        <label for="author_id_box">
+          Author
+        </label>
+
+        <input type="text" id="author_id_box" name="query_author_id">
+      </div>
+
+      <div>
+        <label for="furniture_id_box">
+          Furniture
+        </label>
+
+        <input type="text" id="furniture_id_box" name="query_furniture_id">
+      </div>
+
+      <button>
+        Create communication
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div>
+  <div>
+    <table border="1">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Comment body
+        </th>
+
+        <th>
+          Author
+        </th>
+
+        <th>
+          Furniture
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @list_of_communications.each do |a_communication| %>
+      <tr>
+        <td>
+          <%= a_communication.id %>
+        </td>
+
+        <td>
+          <%= a_communication.comment_body %>
+        </td>
+
+        <td>
+          <%= a_communication.author_id %>
+        </td>
+
+        <td>
+          <%= a_communication.furniture_id %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(a_communication.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(a_communication.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/communications/<%= a_communication.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>

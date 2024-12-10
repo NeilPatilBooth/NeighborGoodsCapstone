@@ -1,5 +1,24 @@
 Rails.application.routes.draw do
 
+  # Routes for the Communication resource:
+
+  # CREATE
+  post("/insert_communication", { :controller => "communications", :action => "create" })
+          
+  # READ
+  get("/communications", { :controller => "communications", :action => "index" })
+  
+  get("/communications/:path_id", { :controller => "communications", :action => "show" })
+  
+  # UPDATE
+  
+  post("/modify_communication/:path_id", { :controller => "communications", :action => "update" })
+  
+  # DELETE
+  get("/delete_communication/:path_id", { :controller => "communications", :action => "destroy" })
+
+  #------------------------------
+
   # Routes for the Furniture resource:
 
   # CREATE
