@@ -1,0 +1,198 @@
+<div>
+  <div>
+    <h1>
+      List of all furnitures
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+    <h2>
+      Add a new furniture
+    </h2>
+
+    <form action="/insert_furniture" method="post">
+      <div>
+        <label for="furniture_name_box">
+          Furniture name
+        </label>
+
+        <input type="text" id="furniture_name_box" name="query_furniture_name">
+      </div>
+
+      <div>
+        <label for="furniture_image_box">
+          Furniture image
+        </label>
+
+        <input type="text" id="furniture_image_box" name="query_furniture_image">
+      </div>
+
+      <div>
+        <label for="furniture_description_box">
+          Furniture description
+        </label>
+
+        <input type="text" id="furniture_description_box" name="query_furniture_description">
+      </div>
+
+      <div>
+        <label for="owner_id_box">
+          Owner
+        </label>
+
+        <input type="text" id="owner_id_box" name="query_owner_id">
+      </div>
+
+      <div>
+        <label for="rent_start_box">
+          Rent start
+        </label>
+
+        <input type="datetime-local" id="rent_start_box" name="query_rent_start">
+      </div>
+
+      <div>
+        <label for="rent_end_box">
+          Rent end
+        </label>
+
+        <input type="datetime-local" id="rent_end_box" name="query_rent_end">
+      </div>
+
+      <div>
+        <label for="borrower_id_box">
+          Borrower
+        </label>
+
+        <input type="text" id="borrower_id_box" name="query_borrower_id">
+      </div>
+
+      <div>
+        <label for="comments_count_box">
+          Comments count
+        </label>
+
+        <input type="text" id="comments_count_box" name="query_comments_count">
+      </div>
+
+      <button>
+        Create furniture
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div>
+  <div>
+    <table border="1">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Furniture name
+        </th>
+
+        <th>
+          Furniture image
+        </th>
+
+        <th>
+          Furniture description
+        </th>
+
+        <th>
+          Owner
+        </th>
+
+        <th>
+          Rent start
+        </th>
+
+        <th>
+          Rent end
+        </th>
+
+        <th>
+          Borrower
+        </th>
+
+        <th>
+          Comments count
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @list_of_furnitures.each do |a_furniture| %>
+      <tr>
+        <td>
+          <%= a_furniture.id %>
+        </td>
+
+        <td>
+          <%= a_furniture.furniture_name %>
+        </td>
+
+        <td>
+          <%= a_furniture.furniture_image %>
+        </td>
+
+        <td>
+          <%= a_furniture.furniture_description %>
+        </td>
+
+        <td>
+          <%= a_furniture.owner_id %>
+        </td>
+
+        <td>
+          <%= a_furniture.rent_start %>
+        </td>
+
+        <td>
+          <%= a_furniture.rent_end %>
+        </td>
+
+        <td>
+          <%= a_furniture.borrower_id %>
+        </td>
+
+        <td>
+          <%= a_furniture.comments_count %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(a_furniture.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(a_furniture.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/furnitures/<%= a_furniture.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>

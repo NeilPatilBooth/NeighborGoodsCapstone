@@ -1,0 +1,178 @@
+<div>
+  <div>
+    <h1>
+      Furniture #<%= @the_furniture.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/furnitures">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_furniture/<%= @the_furniture.id %>">
+          Delete furniture
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Furniture name
+      </dt>
+      <dd>
+        <%= @the_furniture.furniture_name %>
+      </dd>
+
+      <dt>
+        Furniture image
+      </dt>
+      <dd>
+        <%= @the_furniture.furniture_image %>
+      </dd>
+
+      <dt>
+        Furniture description
+      </dt>
+      <dd>
+        <%= @the_furniture.furniture_description %>
+      </dd>
+
+      <dt>
+        Owner
+      </dt>
+      <dd>
+        <%= @the_furniture.owner_id %>
+      </dd>
+
+      <dt>
+        Rent start
+      </dt>
+      <dd>
+        <%= @the_furniture.rent_start %>
+      </dd>
+
+      <dt>
+        Rent end
+      </dt>
+      <dd>
+        <%= @the_furniture.rent_end %>
+      </dd>
+
+      <dt>
+        Borrower
+      </dt>
+      <dd>
+        <%= @the_furniture.borrower_id %>
+      </dd>
+
+      <dt>
+        Comments count
+      </dt>
+      <dd>
+        <%= @the_furniture.comments_count %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_furniture.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_furniture.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit furniture
+    </h2>
+
+    <form action="/modify_furniture/<%= @the_furniture.id %>"  method="post" >
+      <div>
+        <label for="furniture_name_box">
+          Furniture name
+        </label>
+
+        <input type="text" id="furniture_name_box" name="query_furniture_name" value="<%= @the_furniture.furniture_name %>">
+      </div>
+
+      <div>
+        <label for="furniture_image_box">
+          Furniture image
+        </label>
+
+        <input type="text" id="furniture_image_box" name="query_furniture_image" value="<%= @the_furniture.furniture_image %>">
+      </div>
+
+      <div>
+        <label for="furniture_description_box">
+          Furniture description
+        </label>
+
+        <input type="text" id="furniture_description_box" name="query_furniture_description" value="<%= @the_furniture.furniture_description %>">
+      </div>
+
+      <div>
+        <label for="owner_id_box">
+          Owner
+        </label>
+
+        <input type="text" id="owner_id_box" name="query_owner_id" value="<%= @the_furniture.owner_id %>">
+      </div>
+
+      <div>
+        <label for="rent_start_box">
+          Rent start
+        </label>
+
+        <input type="datetime-local" id="rent_start_box" name="query_rent_start"
+         value="<%= @the_furniture.rent_start %>">
+      </div>
+
+      <div>
+        <label for="rent_end_box">
+          Rent end
+        </label>
+
+        <input type="datetime-local" id="rent_end_box" name="query_rent_end"
+         value="<%= @the_furniture.rent_end %>">
+      </div>
+
+      <div>
+        <label for="borrower_id_box">
+          Borrower
+        </label>
+
+        <input type="text" id="borrower_id_box" name="query_borrower_id" value="<%= @the_furniture.borrower_id %>">
+      </div>
+
+      <div>
+        <label for="comments_count_box">
+          Comments count
+        </label>
+
+        <input type="text" id="comments_count_box" name="query_comments_count" value="<%= @the_furniture.comments_count %>">
+      </div>
+
+      <button>
+        Update furniture
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
