@@ -10,7 +10,7 @@ class FurnituresController < ApplicationController
   end
 
   def show
-    the_id = params.fetch("path_id")
+    the_id = params.fetch("id")
 
     matching_furnitures = Furniture.where({ :id => the_id })
 
@@ -24,7 +24,7 @@ class FurnituresController < ApplicationController
     the_furniture.furniture_name = params.fetch("query_furniture_name")
     the_furniture.furniture_image = params.fetch("query_furniture_image")
     the_furniture.furniture_description = params.fetch("query_furniture_description")
-    #the_furniture.owner_id = params.fetch("query_owner_id")
+    the_furniture.owner_id = params.fetch("query_owner_id")
     #the_furniture.rent_start = params.fetch("query_rent_start")
     #the_furniture.rent_end = params.fetch("query_rent_end")
     #the_furniture.borrower_id = params.fetch("query_borrower_id")
@@ -39,7 +39,7 @@ class FurnituresController < ApplicationController
   end
 
   def update
-    the_id = params.fetch("path_id")
+    the_id = params.fetch("id")
     the_furniture = Furniture.where({ :id => the_id }).at(0)
 
     the_furniture.furniture_name = params.fetch("query_furniture_name")
@@ -60,7 +60,7 @@ class FurnituresController < ApplicationController
   end
 
   def destroy
-    the_id = params.fetch("path_id")
+    the_id = params.fetch("id")
     the_furniture = Furniture.where({ :id => the_id }).at(0)
 
     the_furniture.destroy
