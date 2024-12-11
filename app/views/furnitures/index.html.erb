@@ -38,14 +38,6 @@
 
         <input type="text" id="furniture_description_box" name="query_furniture_description">
       </div>
-
-      <div>
-        <label for="owner_id_box">
-          Owner
-        </label>
-
-        <input type="text" id="owner_id_box" name="query_owner_id">
-      </div>
       <button>
         Add furniture
       </button>
@@ -96,7 +88,7 @@
         </td>
 
         <td>
-          <%= an_available_furniture.owner_id %>
+          <%= current_user.email %>
         </td>
 
         <td>
