@@ -11,7 +11,19 @@
   </head>
 
   <body>
+    <nav>
     <a href = "/" > List of All Furniture </a>
+
+    <% if current_user !=nil %>
+      <a href = "/users/sign_out" > User Sign Out</a>
+      <a href = "/users/edit" > Edit Profile </a>
+    <% else %>
+      <a href = "/users/sign_up" > User Sign Up</a>
+      <a href = "/users/sign_in" > User Sign In </a>
+    <% end %>
+
+
+    </nav>
   <hr>
     <div><%= notice %></div>
     <div><%= alert %></div>

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   
   # Route for homepage will be furniture index page 
   root to: "furnitures#index"
