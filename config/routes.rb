@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
+  
   # Route for homepage will be furniture index page 
-  get("/", { :controller => "furnitures", :action => "index" })
+  root to: "furnitures#index"
+  #get("/", { :controller => "furnitures", :action => "index" })
 
   #------------------------------
 
@@ -31,14 +33,14 @@ Rails.application.routes.draw do
   # READ
   get("/furnitures", { :controller => "furnitures", :action => "index" })
   
-  get("/furnitures/:path_id", { :controller => "furnitures", :action => "show" })
+  get("/furnitures/:id", { :controller => "furnitures", :action => "show" })
   
   # UPDATE
   
-  post("/modify_furniture/:path_id", { :controller => "furnitures", :action => "update" })
+  post("/modify_furniture/:id", { :controller => "furnitures", :action => "update" })
   
   # DELETE
-  get("/delete_furniture/:path_id", { :controller => "furnitures", :action => "destroy" })
+  get("/delete_furniture/:id", { :controller => "furnitures", :action => "destroy" })
 
   #------------------------------
 

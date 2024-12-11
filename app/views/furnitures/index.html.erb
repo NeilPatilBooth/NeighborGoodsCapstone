@@ -20,7 +20,7 @@
           Furniture Name
         </label>
 
-        <input type="text" id="furniture_name_box" name="query_furniture_name">
+        <input type="text" id="furniture_name_box" name="query_furniture_name" required>
       </div>
 
       <div>
@@ -28,7 +28,7 @@
           Furniture Image
         </label>
 
-        <input type="file" id="furniture_image_box" name="query_furniture_image">
+        <input type="file" id="furniture_image_box" name="query_furniture_image" required>
       </div>
 
       <div>
@@ -36,7 +36,7 @@
           Furniture Description
         </label>
 
-        <input type="text" id="furniture_description_box" name="query_furniture_description">
+        <input type="text" id="furniture_description_box" name="query_furniture_description" required>
       </div>
 
       <div>
@@ -44,17 +44,16 @@
           Owner
         </label>
 
-        <input type="text" id="owner_id_box" name="query_owner_id">
+        <input type="text" id="owner_id_box" name="query_owner_id" required>
       </div>
-
       <button>
-        Create furniture
+        Add furniture
       </button>
     </form>
   </div>
-</div>
 
-<hr>
+</div>
+    <h2>Furniture Available For Borrowing</h2>
 <div>
   <div>
     <table border="1">
@@ -77,56 +76,101 @@
         </th>
 
         <th>
-          Furniture Borrowed Start Date 
+          Details
         </th>
+
+      </tr>
+      <% @available_furnitures.each do |an_available_furniture| %>
+      <tr>
+
+        <td>
+          <%= an_available_furniture.furniture_name %>
+        </td>
+
+        <td>
+          <img src="<%= an_available_furniture.furniture_image %>" alt="<%= an_available_furniture.furniture_name %>" width="200"></td>
+        </td>
+
+        <td>
+          <%= an_available_furniture.furniture_description %>
+        </td>
+
+        <td>
+          <%= an_available_furniture.owner_id %>
+        </td>
+
+        <td>
+          <a href="/furnitures/<%= an_available_furniture.id %>">
+            Show Details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+    <h2>Furniture Currently Being Borrowed</h2>
+  <div>
+        <table border="1">
+      <tr>
 
         <th>
-          Furniture Borrowed End Date
+          Furniture Name
         </th>
-
+        <th>
+          Furniture Image
+        </th>
+        <th>
+          Furniture Description
+        </th>
+        <th>
+          Owner
+        </th>
         <th>
           Borrower
         </th>
-
+        <th>
+          Borrow Start Date & Time
+        </th>
+        <th>
+          Borrow End Date & Time
+        </th>
         <th>
           Details
         </th>
 
       </tr>
-
-      <% @list_of_furnitures.each do |a_furniture| %>
+        <% @borrowed_furnitures.each do |a_borrowed_furniture| %>
       <tr>
-
         <td>
-          <%= a_furniture.furniture_name %>
+          <%= a_borrowed_furniture.furniture_name %>
         </td>
 
         <td>
-          <img src="<%= a_furniture.furniture_image %>"
+          <img src="<%= a_borrowed_furniture.furniture_image %>" alt="<%= a_borrowed_furniture.furniture_name %>" width="200">
         </td>
 
         <td>
-          <%= a_furniture.furniture_description %>
+          <%= a_borrowed_furniture.furniture_description %>
         </td>
 
         <td>
-          <%= a_furniture.owner_id %>
+          <%= a_borrowed_furniture.owner_id %>
         </td>
 
         <td>
-          <%= a_furniture.rent_start %>
+          <%= a_borrowed_furniture.borrower_id %>
         </td>
 
         <td>
-          <%= a_furniture.rent_end %>
+          <%= a_borrowed_furniture.rent_start %>
         </td>
 
         <td>
-          <%= a_furniture.borrower_id %>
+          <%= a_borrowed_furniture.rent_end %>
         </td>
 
         <td>
-          <a href="/furnitures/<%= a_furniture.id %>">
+          <a href="/furnitures/<%= a_borrowed_furniture.id %>">
             Show Details
           </a>
         </td>
