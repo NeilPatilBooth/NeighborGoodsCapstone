@@ -14,7 +14,7 @@
       Add a new furniture
     </h2>
 
-    <form action="/insert_furniture" method="post">
+    <form action="/insert_furniture" method="post" enctype="multipart/form-data">
       <div>
         <label for="furniture_name_box">
           Furniture Name
@@ -28,7 +28,7 @@
           Furniture Image
         </label>
 
-        <input type="text" id="furniture_image_box" name="query_furniture_image">
+        <input type="file" id="furniture_image_box" name="query_furniture_image">
       </div>
 
       <div>
@@ -102,7 +102,7 @@
         </td>
 
         <td>
-          <%= a_furniture.furniture_image %>
+          <img src="<%= a_furniture.furniture_image %>"
         </td>
 
         <td>

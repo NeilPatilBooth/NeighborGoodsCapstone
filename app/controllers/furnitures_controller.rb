@@ -18,21 +18,21 @@ class FurnituresController < ApplicationController
   end
 
   def create
-    the_furniture = Furniture.new
-    the_furniture.furniture_name = params.fetch("query_furniture_name")
-    the_furniture.furniture_image = params.fetch("query_furniture_image")
-    the_furniture.furniture_description = params.fetch("query_furniture_description")
+    @the_furniture = Furniture.new
+    @the_furniture.furniture_name = params.fetch("query_furniture_name")
+    @the_furniture.furniture_image = params.fetch("query_furniture_image")
+    @the_furniture.furniture_description = params.fetch("query_furniture_description")
     #the_furniture.owner_id = params.fetch("query_owner_id")
     #the_furniture.rent_start = params.fetch("query_rent_start")
     #the_furniture.rent_end = params.fetch("query_rent_end")
     #the_furniture.borrower_id = params.fetch("query_borrower_id")
     #the_furniture.comments_count = params.fetch("query_comments_count")
 
-    if the_furniture.valid?
-      the_furniture.save
+    if @the_furniture.valid?
+      @the_furniture.save
       redirect_to("/furnitures", { :notice => "Furniture created successfully." })
     else
-      redirect_to("/furnitures", { :alert => the_furniture.errors.full_messages.to_sentence })
+      redirect_to("/furnitures", { :alert => @the_furniture.errors.full_messages.to_sentence })
     end
   end
 

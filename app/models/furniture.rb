@@ -15,4 +15,5 @@
 #  owner_id              :integer
 #
 class Furniture < ApplicationRecord
+  mount_uploader :furniture_image, FurnitureImageUploader
 end
