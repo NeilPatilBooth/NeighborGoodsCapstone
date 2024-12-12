@@ -15,6 +15,8 @@
 #  owner_id              :integer
 #
 class Furniture < ApplicationRecord
+  belongs_to :owner, required: true, class_name: "User", foreign_key: "owner_id", counter_cache: :furniture_for_rent_count
+
   mount_uploader :furniture_image, FurnitureImageUploader
 
   # Validation for Available Furniture (borrower_id is nil) -> is lambda 
@@ -32,4 +34,6 @@ class Furniture < ApplicationRecord
   validates(:rent_start, {:presence => true, if: -> { borrower_id.present? } })
   validates(:rent_end, {:presence => true, if: -> { borrower_id.present? } })
   validates(:borrower_id, {:presence => true, if: -> { borrower_id.present? } })
+
+
 end

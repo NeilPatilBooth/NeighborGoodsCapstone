@@ -44,7 +44,7 @@
         Owner
       </dt>
       <dd>
-        <%= @the_furniture.owner_id %>
+        <%= @the_furniture.owner.email %>
       </dd>
 
       <dt>
@@ -66,13 +66,6 @@
       </dt>
       <dd>
         <%= @the_furniture.borrower_id %>
-      </dd>
-
-      <dt>
-        Comments count
-      </dt>
-      <dd>
-        <%= @the_furniture.comments_count %>
       </dd>
 
       <dt>
