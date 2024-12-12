@@ -15,7 +15,7 @@ class FurnituresController < ApplicationController
     matching_furnitures = Furniture.where({ :id => the_id })
 
     @the_furniture = matching_furnitures.at(0)
-
+    
     render({ :template => "furnitures/show" })
   end
 

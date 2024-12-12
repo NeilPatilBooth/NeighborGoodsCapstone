@@ -1,22 +1,16 @@
 <div>
   <div>
     <h1>
-      Furniture #<%= @the_furniture.id %> details
+      Details on <%= @the_furniture.furniture_name %>
     </h1>
 
-    <div>
-      <div>
-        <a href="/furnitures">
-          Go back
-        </a>
-      </div>
-
+    <% if @the_furniture.owner_id == current_user.id %>
       <div>
         <a href="/delete_furniture/<%= @the_furniture.id %>">
           Delete furniture
         </a>
       </div>
-    </div>
+    <% end %>
 
     <dl>
       <dt>
