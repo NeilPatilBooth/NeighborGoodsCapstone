@@ -13,8 +13,9 @@
     <h2>
       Add a new furniture
     </h2>
-
-    <form action="/insert_furniture" method="post" enctype="multipart/form-data">
+  
+  <%if current_user != nil %>
+      <form action="/insert_furniture" method="post" enctype="multipart/form-data">
       <div>
         <label for="furniture_name_box">
           Furniture Name
@@ -42,11 +43,15 @@
         Add furniture
       </button>
     </form>
-  </div>
+
+  <% else %>
+    <p>You must <a href="/users/sign_in">sign in </a> to list furniture. </p>
+  <% end %>
 
 </div>
     <h2>Furniture Available For Borrowing</h2>
 <div>
+  <% if current_user != nil %>
   <div>
     <table border="1">
       <tr>
@@ -99,8 +104,13 @@
       </tr>
       <% end %>
     </table>
+  <% else %>
+    <p> You must <a href="/users/sign_in">sign in </a> to view furniture available. </p>
+  <%end %>
   </div>
     <h2>Furniture Currently Being Borrowed</h2>
+  
+  <% if current_user != nil %>
   <div>
         <table border="1">
       <tr>
@@ -169,6 +179,9 @@
       </tr>
       <% end %>
     </table>
+  <% else %>
+    <p>You must <a href="/users/sign_in">sign in </a> to view current furniture being borrowed. </p>
+  <% end %>
   </div>
 </div>
 
