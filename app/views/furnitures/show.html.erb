@@ -62,19 +62,6 @@
         <%= @the_furniture.borrower_id %>
       </dd>
 
-      <dt>
-        Created at
-      </dt>
-      <dd>
-        <%= time_ago_in_words(@the_furniture.created_at) %> ago
-      </dd>
-
-      <dt>
-        Updated at
-      </dt>
-      <dd>
-        <%= time_ago_in_words(@the_furniture.updated_at) %> ago
-      </dd>
     </dl>
   </div>
 </div>
@@ -83,12 +70,13 @@
 
 
 <div>
+  <% if @the_furniture.owner_id == current_user.id %>
   <div>
     <h2>
       Edit furniture
     </h2>
 
-    <form action="/modify_furniture/<%= @the_furniture.id %>"  method="post" >
+    <form action="/modify_furniture/<%= @the_furniture.id %>"  method="post" enctype="multipart/form-data">
       <div>
         <label for="furniture_name_box">
           Furniture name
@@ -99,10 +87,12 @@
 
       <div>
         <label for="furniture_image_box">
-          Furniture image
+          Furniture Image
         </label>
 
-        <input type="text" id="furniture_image_box" name="query_furniture_image" value="<%= @the_furniture.furniture_image %>">
+        <input type="file" id="furniture_image_box" name="query_furniture_image">
+        <p>Current Image:</p>
+        <img src="<%= @the_furniture.furniture_image %>" alt="<%= @the_furniture.furniture_name %>" style="max-width: 300px; height: auto;">
       </div>
 
       <div>
@@ -147,19 +137,12 @@
         <input type="text" id="borrower_id_box" name="query_borrower_id" value="<%= @the_furniture.borrower_id %>">
       </div>
 
-      <div>
-        <label for="comments_count_box">
-          Comments count
-        </label>
-
-        <input type="text" id="comments_count_box" name="query_comments_count" value="<%= @the_furniture.comments_count %>">
-      </div>
-
       <button>
         Update furniture
       </button>
     </form>
   </div>
+  <% end %>
 </div>
 
 <hr>
