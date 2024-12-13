@@ -11,15 +11,15 @@
   </head>
 
   <body>
-    <nav>
-    <a href = "/" > List of All Furniture </a>
+    <nav style="padding: 10px; text-align: left;">
+    <a href = "/" style="margin-right: 15px;  color: #007bff;"> List of All Furniture </a>
 
     <% if current_user !=nil %>
-      <a href = "/users/sign_out" > User Sign Out</a>
-      <a href = "/users/edit" > Edit Profile </a>
+      <a href = "/users/sign_out" style="margin-right: 15px; color: #007bff;" > User Sign Out</a>
+      <a href = "/users/edit" style="margin-right: 15px; color: #007bff;" > Edit Profile </a>
     <% else %>
-      <a href = "/users/sign_up" > User Sign Up</a>
-      <a href = "/users/sign_in" > User Sign In </a>
+      <a href = "/users/sign_up" style="margin-right: 15px; color: #007bff;" > User Sign Up</a>
+      <a href = "/users/sign_in" style="margin-right: 15px; color: #007bff;" > User Sign In </a>
     <% end %>
 
 

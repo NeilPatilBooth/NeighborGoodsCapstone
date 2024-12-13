@@ -25,7 +25,7 @@ class CommunicationsController < ApplicationController
 
     if the_communication.valid?
       the_communication.save
-      redirect_to("/furnitures/#{the_communication.furniture_id}", { :notice => "Comment posted successfully."} )
+      redirect_to("/furnitures/#{the_communication.furniture_id}", { :notice => "Comment posted successfully." })
     else
       redirect_to("/furnitures/#{the_communication.furniture_id}", { :alert => the_communication.errors.full_messages.to_sentence })
     end
@@ -41,7 +41,7 @@ class CommunicationsController < ApplicationController
 
     if the_communication.valid?
       the_communication.save
-      redirect_to("/communications/#{the_communication.id}", { :notice => "Communication updated successfully."} )
+      redirect_to("/communications/#{the_communication.id}", { :notice => "Communication updated successfully." })
     else
       redirect_to("/communications/#{the_communication.id}", { :alert => the_communication.errors.full_messages.to_sentence })
     end
@@ -53,6 +53,6 @@ class CommunicationsController < ApplicationController
 
     the_communication.destroy
 
-    redirect_to("/communications", { :notice => "Communication deleted successfully."} )
+    redirect_to("/communications", { :notice => "Communication deleted successfully." })
   end
 end

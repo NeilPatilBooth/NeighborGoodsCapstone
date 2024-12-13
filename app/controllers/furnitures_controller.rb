@@ -15,7 +15,7 @@ class FurnituresController < ApplicationController
     matching_furnitures = Furniture.where({ :id => the_id })
 
     @the_furniture = matching_furnitures.at(0)
-    
+
     render({ :template => "furnitures/show" })
   end
 
@@ -57,7 +57,7 @@ class FurnituresController < ApplicationController
 
     if the_furniture.valid?
       the_furniture.save
-      redirect_to("/furnitures/#{the_furniture.id}", { :notice => "Furniture updated successfully."} )
+      redirect_to("/furnitures/#{the_furniture.id}", { :notice => "Furniture updated successfully." })
     else
       redirect_to("/furnitures/#{the_furniture.id}", { :alert => the_furniture.errors.full_messages.to_sentence })
     end
@@ -69,6 +69,6 @@ class FurnituresController < ApplicationController
 
     the_furniture.destroy
 
-    redirect_to("/furnitures", { :notice => "Furniture deleted successfully."} )
+    redirect_to("/furnitures", { :notice => "Furniture deleted successfully." })
   end
 end

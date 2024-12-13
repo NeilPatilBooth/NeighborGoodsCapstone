@@ -1,195 +1,190 @@
 <div>
-  <div>
-    <h1>
-      NeighborGoods
-    </h1>
-  </div>
 
-  <div>
-    <h2>
+  <div style="background-color: #E6E6FA; padding: 5px; text-align: center; border-radius: 10px;">
+    <h1 style="margin: 5; color: #4B0082;">NeighborGoods</h1>
+    <h2 style="margin: 0; font-size: 1.5em; color: #6A5ACD;">
       Your Neighbors. Your Furniture. Your Choice.
     </h2>
   </div>
-</div>
 
-<hr>
+  <hr>
 
-<div>
   <div>
-    <h2>
-      Add a new furniture
-    </h2>
-  
-  <%if current_user != nil %>
-      <form action="/insert_furniture" method="post" enctype="multipart/form-data">
-      <div>
-        <label for="furniture_name_box">
-          Furniture Name
-        </label>
+    <div>
+      <h2>
+        Add a new furniture
+      </h2>
 
-        <input type="text" id="furniture_name_box" name="query_furniture_name">
-      </div>
+      <%if current_user != nil %>
+        <form action="/insert_furniture" method="post" enctype="multipart/form-data">
+          <div>
+            <label for="furniture_name_box">
+              Furniture Name
+            </label>
 
-      <div>
-        <label for="furniture_image_box">
-          Furniture Image
-        </label>
+            <input type="text" id="furniture_name_box" name="query_furniture_name">
+          </div>
 
-        <input type="file" id="furniture_image_box" name="query_furniture_image">
-      </div>
+          <div>
+            <label for="furniture_image_box">
+              Furniture Image
+            </label>
 
-      <div>
-        <label for="furniture_description_box">
-          Furniture Description
-        </label>
+            <input type="file" id="furniture_image_box" name="query_furniture_image">
+          </div>
 
-        <input type="text" id="furniture_description_box" name="query_furniture_description">
-      </div>
-      <button>
-        Add furniture
-      </button>
-    </form>
+          <div>
+            <label for="furniture_description_box">
+              Furniture Description
+            </label>
 
-  <% else %>
-    <p>You must <a href="/users/sign_in">sign in </a> to list furniture. </p>
-  <% end %>
+            <input type="text" id="furniture_description_box" name="query_furniture_description">
+          </div>
+          <button>
+            Add furniture
+          </button>
+        </form>
 
-</div>
+      <% else %>
+        <p>You must <a href="/users/sign_in">sign in </a> to list furniture. </p>
+      <% end %>
+
+    </div>
     <h2>Furniture Available For Borrowing</h2>
-<div>
-  <% if current_user != nil %>
-  <div>
-    <table border="1">
-      <tr>
+    <div>
+      <% if current_user != nil %>
+        <div>
+          <table border="1">
+            <tr>
 
-        <th>
-          Furniture Name
-        </th>
+              <th>
+                Furniture Name
+              </th>
 
-        <th>
-          Furniture Image
-        </th>
+              <th>
+                Furniture Image
+              </th>
 
-        <th>
-          Furniture Description
-        </th>
+              <th>
+                Furniture Description
+              </th>
 
-        <th>
-          Owner
-        </th>
+              <th>
+                Owner
+              </th>
 
-        <th>
-          Details
-        </th>
+              <th>
+                Details
+              </th>
 
-      </tr>
-      <% @available_furnitures.each do |an_available_furniture| %>
-      <tr>
+            </tr>
+            <% @available_furnitures.each do |an_available_furniture| %>
+              <tr>
 
-        <td>
-          <%= an_available_furniture.furniture_name %>
-        </td>
+                <td>
+                  <%= an_available_furniture.furniture_name %>
+                </td>
 
-        <td>
-          <img src="<%= an_available_furniture.furniture_image %>" alt="<%= an_available_furniture.furniture_name %>" width="200"></td>
-        </td>
+                <td>
+                  <img src="<%= an_available_furniture.furniture_image %>" alt="<%= an_available_furniture.furniture_name %>" width="200"></td>
+              </td>
 
-        <td>
-          <%= an_available_furniture.furniture_description %>
-        </td>
+              <td>
+                <%= an_available_furniture.furniture_description %>
+              </td>
 
-        <td>
-          <%= an_available_furniture.owner.email %>
-        </td>
+              <td>
+                <%= an_available_furniture.owner.email %>
+              </td>
 
-        <td>
-          <a href="/furnitures/<%= an_available_furniture.id %>">
-            Show Details
-          </a>
-        </td>
-      </tr>
-      <% end %>
-    </table>
-  <% else %>
-    <p> You must <a href="/users/sign_in">sign in </a> to view furniture available. </p>
-  <%end %>
-  </div>
-  
+              <td>
+                <a href="/furnitures/<%= an_available_furniture.id %>">
+                  Show Details
+                </a>
+              </td>
+            </tr>
+          <% end %>
+        </table>
+      <% else %>
+        <p> You must <a href="/users/sign_in">sign in </a> to view furniture available. </p>
+      <%end %>
+    </div>
+
     <h2>Furniture Currently Being Borrowed</h2>
-  
-  <% if current_user != nil %>
-  <div>
+
+    <% if current_user != nil %>
+      <div>
         <table border="1">
-      <tr>
+          <tr>
 
-        <th>
-          Furniture Name
-        </th>
-        <th>
-          Furniture Image
-        </th>
-        <th>
-          Furniture Description
-        </th>
-        <th>
-          Owner
-        </th>
-        <th>
-          Borrower
-        </th>
-        <th>
-          Borrow Start Date & Time
-        </th>
-        <th>
-          Borrow End Date & Time
-        </th>
-        <th>
-          Details
-        </th>
+            <th>
+              Furniture Name
+            </th>
+            <th>
+              Furniture Image
+            </th>
+            <th>
+              Furniture Description
+            </th>
+            <th>
+              Owner
+            </th>
+            <th>
+              Borrower
+            </th>
+            <th>
+              Borrow Start Date & Time
+            </th>
+            <th>
+              Borrow End Date & Time
+            </th>
+            <th>
+              Details
+            </th>
 
-      </tr>
-        <% @borrowed_furnitures.each do |a_borrowed_furniture| %>
-      <tr>
-        <td>
-          <%= a_borrowed_furniture.furniture_name %>
-        </td>
+          </tr>
+          <% @borrowed_furnitures.each do |a_borrowed_furniture| %>
+            <tr>
+              <td>
+                <%= a_borrowed_furniture.furniture_name %>
+              </td>
 
-        <td>
-          <img src="<%= a_borrowed_furniture.furniture_image %>" alt="<%= a_borrowed_furniture.furniture_name %>" width="200">
-        </td>
+              <td>
+                <img src="<%= a_borrowed_furniture.furniture_image %>" alt="<%= a_borrowed_furniture.furniture_name %>" width="200">
+              </td>
 
-        <td>
-          <%= a_borrowed_furniture.furniture_description %>
-        </td>
+              <td>
+                <%= a_borrowed_furniture.furniture_description %>
+              </td>
 
-        <td>
-          <%= a_borrowed_furniture.owner.email %>
-        </td>
+              <td>
+                <%= a_borrowed_furniture.owner.email %>
+              </td>
 
-        <td>
-          <%= a_borrowed_furniture.borrower.email %>
-        </td>
+              <td>
+                <%= a_borrowed_furniture.borrower.email %>
+              </td>
 
-        <td>
-          <%= a_borrowed_furniture.rent_start.strftime("%m/%d/%Y %I:%M %p") %>
-        </td>
+              <td>
+                <%= a_borrowed_furniture.rent_start.strftime("%m/%d/%Y %I:%M %p") %>
+              </td>
 
-        <td>
-          <%= a_borrowed_furniture.rent_end.strftime("%m/%d/%Y %I:%M %p") %>
-        </td>
+              <td>
+                <%= a_borrowed_furniture.rent_end.strftime("%m/%d/%Y %I:%M %p") %>
+              </td>
 
-        <td>
-          <a href="/furnitures/<%= a_borrowed_furniture.id %>">
-            Show Details
-          </a>
-        </td>
-      </tr>
+              <td>
+                <a href="/furnitures/<%= a_borrowed_furniture.id %>">
+                  Show Details
+                </a>
+              </td>
+            </tr>
+          <% end %>
+        </table>
+      <% else %>
+        <p>You must <a href="/users/sign_in">sign in </a> to view current furniture being borrowed. </p>
       <% end %>
-    </table>
-  <% else %>
-    <p>You must <a href="/users/sign_in">sign in </a> to view current furniture being borrowed. </p>
-  <% end %>
+    </div>
   </div>
-</div>
 
-<hr>
+  <hr>
