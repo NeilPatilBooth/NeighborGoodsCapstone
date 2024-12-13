@@ -12,62 +12,49 @@
       </div>
     <% end %>
 
-    <dl>
-      <dt>
-        Furniture name
-      </dt>
-      <dd>
-        <%= @the_furniture.furniture_name %>
-      </dd>
 
-      <dt>
-        Furniture image
-      </dt>
-      <dd>
-        <img src="<%= @the_furniture.furniture_image %>" alt="<%= @the_furniture.furniture_name %>" style="max-width: 300px; height: auto;">
-      </dd>
-
-      <dt>
-        Furniture description
-      </dt>
-      <dd>
-        <%= @the_furniture.furniture_description %>
-      </dd>
-
-      <dt>
-        Owner
-      </dt>
-      <dd>
-        <%= @the_furniture.owner.email %>
-      </dd>
-
-      <dt>
-        Rent start
-      </dt>
-      <dd>
-        <%= @the_furniture.rent_start %>
-      </dd>
-
-      <dt>
-        Rent end
-      </dt>
-      <dd>
-        <%= @the_furniture.rent_end %>
-      </dd>
-
-      <dt>
-        Borrower
-      </dt>
-      <dd>
-        <% if @the_furniture.borrower.present? %>
-          <%= @the_furniture.borrower.email%>
-        <% else %>
-          Not borrowed
-        <% end %>
-      </dd>
-
-    </dl>
   </div>
+
+  <table border="1" style="width: 100%;">
+  <tr>
+    <th>Furniture Name</th>
+    <td><%= @the_furniture.furniture_name %></td>
+  </tr>
+  <tr>
+    <th>Furniture Image</th>
+    <td>
+      <img src="<%= @the_furniture.furniture_image %>" alt="<%= @the_furniture.furniture_name %>" style="max-width: 300px; height: auto;">
+    </td>
+  </tr>
+  <tr>
+    <th>Furniture Description</th>
+    <td><%= @the_furniture.furniture_description %></td>
+  </tr>
+  <tr>
+    <th>Owner</th>
+    <td><%= @the_furniture.owner.email %></td>
+  </tr>
+  <tr>
+    <th>Rent Start</th>
+    <td><%= @the_furniture.rent_start %></td>
+  </tr>
+  <tr>
+    <th>Rent End</th>
+    <td><%= @the_furniture.rent_end %></td>
+  </tr>
+  <tr>
+    <th>Borrower</th>
+    <td>
+      <% if @the_furniture.borrower.present? %>
+        <%= @the_furniture.borrower.email %>
+      <% else %>
+        Not borrowed
+      <% end %>
+    </td>
+  </tr>
+</table>
+
+
 </div>
 
 <hr>
@@ -127,7 +114,7 @@
 
       <div>
         <label for="borrower_id_box">
-          Borrower
+          Borrower ID
         </label>
 
         <input type="text" id="borrower_id_box" name="query_borrower_id" value="<%= @the_furniture.borrower_id %>">
@@ -167,20 +154,21 @@
 
   <!-- Messages Table -->
   <div>
-    <h3>Previous Messages</h3>
+    <h3> Comments </h3>
     <table border="1">
-      <thead>
+
         <tr>
-          <th>Messenger</th>
-          <th>Date of Message</th>
-          <th>Message</th>
+          <th>Commenter</th>
+          <th>Commenter ID</th>
+          <th>Date of Comment</th>
+          <th>Comment</th>
         </tr>
-      </thead>
       <tbody>
-        <% @the_furniture.comments.each do |comment| %>
+        <% @the_furniture.comments.order(created_at: :desc).each do |comment| %>
           <tr>
             <td><%= comment.author.email %></td>
-            <td><%= time_ago_in_words(comment.created_at) %> ago</td>
+            <td><%= comment.author.id %></td>
+            <td><%= comment.created_at %> ago</td>
             <td><%= comment.comment_body %></td>
           </tr>
         <% end %>
