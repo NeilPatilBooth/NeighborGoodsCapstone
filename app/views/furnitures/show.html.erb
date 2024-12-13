@@ -142,3 +142,49 @@
 </div>
 
 <hr>
+
+<hr>
+<div>
+  <h2>Messages</h2>
+
+  <!-- Message Form -->
+  <div>
+    <h3>Send a Message</h3>
+
+    <form action="/insert_communication" method="post">
+      <div>
+        <label for="comment_body_box">Message</label>
+        <input type="text" id="comment_body_box" name="query_comment_body" required>
+      </div>
+
+      <!-- Hidden Fields -->
+      <input type="hidden" name="query_author_id" value="<%= current_user.id %>">
+      <input type="hidden" name="query_furniture_id" value="<%= @the_furniture.id %>">
+
+      <button>Send Message</button>
+    </form>
+  </div>
+
+  <!-- Messages Table -->
+  <div>
+    <h3>Previous Messages</h3>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>Messenger</th>
+          <th>Date of Message</th>
+          <th>Message</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @the_furniture.comments.each do |comment| %>
+          <tr>
+            <td><%= comment.author.email %></td>
+            <td><%= time_ago_in_words(comment.created_at) %> ago</td>
+            <td><%= comment.comment_body %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

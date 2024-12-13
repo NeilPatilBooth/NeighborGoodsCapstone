@@ -20,14 +20,14 @@ class CommunicationsController < ApplicationController
   def create
     the_communication = Communication.new
     the_communication.comment_body = params.fetch("query_comment_body")
-    the_communication.author_id = params.fetch("query_author_id")
+    the_communication.author_id = current_user.id
     the_communication.furniture_id = params.fetch("query_furniture_id")
 
     if the_communication.valid?
       the_communication.save
-      redirect_to("/communications", { :notice => "Communication created successfully." })
+      redirect_to("/furnitures/#{the_communication.furniture_id}", { :notice => "Furniture updated successfully."} )
     else
-      redirect_to("/communications", { :alert => the_communication.errors.full_messages.to_sentence })
+      redirect_to("/furnitures/#{the_communication.furniture_id}", { :alert => the_communication.errors.full_messages.to_sentence })
     end
   end
 

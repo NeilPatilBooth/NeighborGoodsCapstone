@@ -10,4 +10,6 @@
 #  furniture_id :integer
 #
 class Communication < ApplicationRecord
-end
+  belongs_to :author, required: true, class_name: "User", foreign_key: "author_id"
+  belongs_to :furniture, required: true, class_name: "Furniture", foreign_key: "furniture_id"
+end 

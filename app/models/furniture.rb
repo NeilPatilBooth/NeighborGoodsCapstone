@@ -17,7 +17,7 @@
 class Furniture < ApplicationRecord
   belongs_to :owner, required: true, class_name: "User", foreign_key: "owner_id"
   belongs_to :borrower, class_name: "User", foreign_key: "borrower_id", optional: true
-
+  has_many  :comments, class_name: "Communication", foreign_key: "furniture_id", dependent: :destroy
   mount_uploader :furniture_image, FurnitureImageUploader
 
   # Validation for fields required during creation 
