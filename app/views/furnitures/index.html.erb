@@ -93,7 +93,7 @@
         </td>
 
         <td>
-          <%= current_user.email %>
+          <%= an_available_furniture.owner.email %>
         </td>
 
         <td>
@@ -108,6 +108,7 @@
     <p> You must <a href="/users/sign_in">sign in </a> to view furniture available. </p>
   <%end %>
   </div>
+  
     <h2>Furniture Currently Being Borrowed</h2>
   
   <% if current_user != nil %>
@@ -156,11 +157,11 @@
         </td>
 
         <td>
-          <%= a_borrowed_furniture.owner_id %>
+          <%= a_borrowed_furniture.owner.email %>
         </td>
 
         <td>
-          <%= a_borrowed_furniture.borrower_id %>
+          <%= a_borrowed_furniture.borrower.email %>
         </td>
 
         <td>

@@ -59,7 +59,11 @@
         Borrower
       </dt>
       <dd>
-        <%= @the_furniture.borrower_id %>
+        <% if @the_furniture.borrower.present? %>
+          <%= @the_furniture.borrower.email%>
+        <% else %>
+          Not borrowed
+        <% end %>
       </dd>
 
     </dl>
@@ -101,14 +105,6 @@
         </label>
 
         <input type="text" id="furniture_description_box" name="query_furniture_description" value="<%= @the_furniture.furniture_description %>">
-      </div>
-
-      <div>
-        <label for="owner_id_box">
-          Owner
-        </label>
-
-        <input type="text" id="owner_id_box" name="query_owner_id" value="<%= @the_furniture.owner_id %>">
       </div>
 
       <div>
