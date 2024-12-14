@@ -4,127 +4,124 @@
       Details on <%= @the_furniture.furniture_name %>
     </h1>
 
-    <% if @the_furniture.owner_id == current_user.id %>
-      <div>
-        <a href="/delete_furniture/<%= @the_furniture.id %>">
-          Delete furniture
-        </a>
-      </div>
-    <% end %>
-
-
   </div>
 
-  <table border="1" style="width: 100%;">
-  <tr>
-    <th>Furniture Name</th>
-    <td><%= @the_furniture.furniture_name %></td>
-  </tr>
-  <tr>
-    <th>Furniture Image</th>
-    <td>
-      <img src="<%= @the_furniture.furniture_image %>" alt="<%= @the_furniture.furniture_name %>" style="max-width: 300px; height: auto;">
-    </td>
-  </tr>
-  <tr>
-    <th>Furniture Description</th>
-    <td><%= @the_furniture.furniture_description %></td>
-  </tr>
-  <tr>
-    <th>Owner</th>
-    <td><%= @the_furniture.owner.email %></td>
-  </tr>
-  <tr>
-    <th>Rent Start</th>
-    <td><%= @the_furniture.rent_start %></td>
-  </tr>
-  <tr>
-    <th>Rent End</th>
-    <td><%= @the_furniture.rent_end %></td>
-  </tr>
-  <tr>
-    <th>Borrower</th>
-    <td>
-      <% if @the_furniture.borrower.present? %>
-        <%= @the_furniture.borrower.email %>
-      <% else %>
-        Not borrowed
-      <% end %>
-    </td>
-  </tr>
-</table>
+  <table border="1" style="width: 100%; ackground-color: #E6E6FA;  border-collapse: collapse; text-align: left; margin-top: 20px;">
+    <tr>
+      <th style="padding: 5px;">Furniture Name</th>
+      <td><%= @the_furniture.furniture_name %></td>
+    </tr>
+    <tr>
+      <th style="padding: 5px;">Furniture Image</th>
+      <td>
+        <img src="<%= @the_furniture.furniture_image %>" alt="<%= @the_furniture.furniture_name %>" style="max-width: 300px; height: auto;">
+      </td>
+    </tr>
+    <tr>
+      <th style="padding: 5px;">Furniture Description</th>
+      <td><%= @the_furniture.furniture_description %></td>
+    </tr>
+    <tr>
+      <th style="padding: 5px;">Owner</th>
+      <td><%= @the_furniture.owner.email %></td>
+    </tr>
+    <tr>
+      <th style="padding: 5px;">Rent Start</th>
+      <td><%= @the_furniture.rent_start %></td>
+    </tr>
+    <tr>
+      <th style="padding: 5px;">Rent End</th>
+      <td><%= @the_furniture.rent_end %></td>
+    </tr>
+    <tr>
+      <th style="padding: 5px;">Borrower</th>
+      <td>
+        <% if @the_furniture.borrower.present? %>
+          <%= @the_furniture.borrower.email %>
+        <% else %>
+          Not borrowed
+        <% end %>
+      </td>
+    </tr>
+  </table>
 
+  <% if @the_furniture.owner_id == current_user.id %>
+    <div>
+      <a href="/delete_furniture/<%= @the_furniture.id %>">
+        Delete furniture
+      </a>
+    </div>
+  <% end %>
 
 </div>
 
 <hr>
 
-
-<div>
+<div style= padding: auto; text-align: left;">
   <% if @the_furniture.owner_id == current_user.id %>
-  <div>
-    <h2>
-      Edit furniture
-    </h2>
+    <div>
+      <h2>
+        Edit furniture
+      </h2>
 
-    <form action="/modify_furniture/<%= @the_furniture.id %>"  method="post" enctype="multipart/form-data">
-      <div>
-        <label for="furniture_name_box">
-          Furniture name
-        </label>
+      <form action="/modify_furniture/<%= @the_furniture.id %>"  method="post" enctype="multipart/form-data">
+        <div>
+          <label for="furniture_name_box">
+            Furniture name
+          </label>
 
-        <input type="text" id="furniture_name_box" name="query_furniture_name" value="<%= @the_furniture.furniture_name %>">
-      </div>
+          <input type="text" id="furniture_name_box" name="query_furniture_name" value="<%= @the_furniture.furniture_name %>">
+        </div>
 
-      <div>
-        <label for="furniture_image_box">
-          Furniture Image
-        </label>
+        <div>
+          <label for="furniture_image_box">
+            Furniture Image
+          </label>
 
-        <input type="file" id="furniture_image_box" name="query_furniture_image">
-        <p>Current Image:</p>
-        <img src="<%= @the_furniture.furniture_image %>" alt="<%= @the_furniture.furniture_name %>" style="max-width: 300px; height: auto;">
-      </div>
+          <input type="file" id="furniture_image_box" name="query_furniture_image">
+          <p>Current Image:</p>
+          <img src="<%= @the_furniture.furniture_image %>" alt="<%= @the_furniture.furniture_name %>" style="max-width: 300px; height: auto;">
+        </div>
 
-      <div>
-        <label for="furniture_description_box">
-          Furniture description
-        </label>
+        <div>
+          <label for="furniture_description_box">
+            Furniture description
+          </label>
 
-        <input type="text" id="furniture_description_box" name="query_furniture_description" value="<%= @the_furniture.furniture_description %>">
-      </div>
+          <input type="text" id="furniture_description_box" name="query_furniture_description" value="<%= @the_furniture.furniture_description %>">
+        </div>
 
-      <div>
-        <label for="rent_start_box">
-          Rent start
-        </label>
+        <div>
+          <label for="rent_start_box">
+            Rent start
+          </label>
 
-        <input type="datetime-local" id="rent_start_box" name="query_rent_start"
+          <input type="datetime-local" id="rent_start_box" name="query_rent_start"
          value="<%= @the_furniture.rent_start %>">
-      </div>
+        </div>
 
-      <div>
-        <label for="rent_end_box">
-          Rent end
-        </label>
+        <div>
+          <label for="rent_end_box">
+            Rent end
+          </label>
 
-        <input type="datetime-local" id="rent_end_box" name="query_rent_end"
+          <input type="datetime-local" id="rent_end_box" name="query_rent_end"
          value="<%= @the_furniture.rent_end %>">
-      </div>
+        </div>
 
-      <div>
-        <label for="borrower_id_box">
-          Borrower ID
-        </label>
+        <div>
+          <label for="borrower_id_box">
+            Borrower ID
+          </label>
 
-        <input type="text" id="borrower_id_box" name="query_borrower_id" value="<%= @the_furniture.borrower_id %>">
-      </div>
+          <input type="text" id="borrower_id_box" name="query_borrower_id" value="<%= @the_furniture.borrower_id %>">
+        </div>
 
-      <button>
-        Update furniture
-      </button>
-    </form>
-  </div>
+        <button>
+          Update furniture
+        </button>
+      </form>
+    </div>
   <% end %>
 </div>
 
@@ -132,15 +129,15 @@
 
 <hr>
 <div>
-  <h2>Messages</h2>
+  <h2>Comment</h2>
 
   <!-- Message Form -->
   <div>
-    <h3>Send a Message</h3>
+    <h3>Send a Comment</h3>
 
     <form action="/insert_communication" method="post">
       <div>
-        <label for="comment_body_box">Message</label>
+        <label for="comment_body_box">Comment</label>
         <input type="text" id="comment_body_box" name="query_comment_body" required>
       </div>
 
@@ -148,27 +145,27 @@
       <input type="hidden" name="query_author_id" value="<%= current_user.id %>">
       <input type="hidden" name="query_furniture_id" value="<%= @the_furniture.id %>">
 
-      <button>Send Message</button>
+      <button>Send Comment</button>
     </form>
   </div>
 
   <!-- Messages Table -->
   <div>
     <h3> Comments </h3>
-    <table border="1">
+    <table border="1" style="width: 100%; border-collapse: collapse; text-align: center;">
 
-        <tr>
-          <th>Commenter</th>
-          <th>Commenter ID</th>
-          <th>Date of Comment</th>
-          <th>Comment</th>
-        </tr>
+      <tr>
+        <th>Commenter</th>
+        <th>Commenter ID</th>
+        <th>Date of Comment</th>
+        <th>Comment</th>
+      </tr>
       <tbody>
         <% @the_furniture.comments.order(created_at: :desc).each do |comment| %>
           <tr>
             <td><%= comment.author.email %></td>
             <td><%= comment.author.id %></td>
-            <td><%= comment.created_at %> ago</td>
+            <td><%= comment.created_at.strftime("%m/%d/%Y %I:%M %p") %> </td>
             <td><%= comment.comment_body %></td>
           </tr>
         <% end %>
