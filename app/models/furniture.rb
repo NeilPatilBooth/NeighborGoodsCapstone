@@ -20,14 +20,14 @@ class Furniture < ApplicationRecord
   has_many  :comments, class_name: "Communication", foreign_key: "furniture_id", dependent: :destroy
   mount_uploader :furniture_image, FurnitureImageUploader
 
-  # Validation for fields required during creation 
+  # Validation for fields required during creation. "->"" is lambda, necessary because if: borrower_id.present? is executed immediately, not when the validation is actually performed. Lambdas allow for dynamic evaluation. 
   validates(:furniture_name, { :presence => true, :on => :create })
   validates(:furniture_image, { :presence => true, if: -> { borrower_id.nil? } })
   validates(:furniture_description, { :presence => true, :on => :create })
   validates(:owner_id, { :presence => true, :on => :create })
 
 
-  # Validation for borrowed furniture (borrower_id is not nil) -> is lambda 
+  # Validation for borrowed furniture (borrower_id is not nil). -> is lambda necessary because if: borrower_id.present? is executed immediately, not when the validation is actually performed. Lambdas allow for dynamic evaluation. 
   validates(:furniture_name, { :presence => true, if: -> { borrower_id.present? } })
   validates(:furniture_image, { :presence => true, if: -> { borrower_id.present? } })
   validates(:furniture_description, {:presence => true, if: -> { borrower_id.present? } })
