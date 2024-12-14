@@ -2,7 +2,7 @@
 
   <div style="background-color: #E6E6FA; padding: 5px; text-align: center; border-radius: 10px;">
     <h1 style="margin: 5; color: #4B0082;">NeighborGoods</h1>
-    <h2 style="margin: 0; font-size: 1.5em; color: #6A5ACD;">
+    <h2 style="margin: 0; font-size: 1.5; color: #6A5ACD;">
       Your Neighbors. Your Furniture. Your Choice.
     </h2>
   </div>
@@ -10,9 +10,9 @@
   <hr>
 
   <div>
-    <div>
+    <div style="background-color: #E6E6FA; padding: auto; text-align: left; border-radius: 10px;">
       <h2>
-        Add a new furniture
+        List Your Furniture 
       </h2>
 
       <%if current_user != nil %>
@@ -50,30 +50,33 @@
       <% end %>
 
     </div>
+
+      <hr>
+      
     <h2>Furniture Available For Borrowing</h2>
     <div>
       <% if current_user != nil %>
         <div>
-          <table border="1">
+          <table border="1" style="width: 100%; border-collapse: collapse; text-align: center;">
             <tr>
 
-              <th>
+              <th style="padding: 5px;">
                 Furniture Name
               </th>
 
-              <th>
+              <th style="padding: 5px;">
                 Furniture Image
               </th>
 
-              <th>
+              <th style="padding: 5px;">
                 Furniture Description
               </th>
 
-              <th>
+              <th style="padding: 5px;">
                 Owner
               </th>
 
-              <th>
+              <th style="padding: 5px;">
                 Details
               </th>
 
@@ -86,8 +89,8 @@
                 </td>
 
                 <td>
-                  <img src="<%= an_available_furniture.furniture_image %>" alt="<%= an_available_furniture.furniture_name %>" width="200"></td>
-              </td>
+                  <img src="<%= an_available_furniture.furniture_image %>" alt="<%= an_available_furniture.furniture_name %>" style="width: 300px; height: 300px; object-fit: contain; display: block; margin: 0 auto;">
+                </td>
 
               <td>
                 <%= an_available_furniture.furniture_description %>
@@ -110,35 +113,37 @@
       <%end %>
     </div>
 
+    <hr>
+
     <h2>Furniture Currently Being Borrowed</h2>
 
     <% if current_user != nil %>
       <div>
-        <table border="1">
+        <table border="1" style="width: 100%; border-collapse: collapse; text-align: center;">
           <tr>
 
-            <th>
+            <th style="padding: 5px;">
               Furniture Name
             </th>
-            <th>
+            <th style="padding: 5px;">
               Furniture Image
             </th>
-            <th>
+            <th style="padding: 5px;">
               Furniture Description
             </th>
-            <th>
+            <th style="padding: 5px;"> 
               Owner
             </th>
-            <th>
+            <th style="padding: 5px;">
               Borrower
             </th>
-            <th>
+            <th style="padding: 5px;">
               Borrow Start Date & Time
             </th>
-            <th>
+            <th style="padding: 5px;">
               Borrow End Date & Time
             </th>
-            <th>
+            <th style="padding: 5px;">
               Details
             </th>
 
@@ -150,7 +155,7 @@
               </td>
 
               <td>
-                <img src="<%= a_borrowed_furniture.furniture_image %>" alt="<%= a_borrowed_furniture.furniture_name %>" width="200">
+                <img src="<%= a_borrowed_furniture.furniture_image %>" alt="<%= a_borrowed_furniture.furniture_name %>" style="width: 300px; height: 300px; object-fit: contain; display: block; margin: 0 auto;">
               </td>
 
               <td>
